@@ -28,6 +28,7 @@ public class Department implements Serializable
 	private Integer id;
 	private String name;
 	private String desp;
+	private String notesString;
 	
 	private Department supDept;
 	private Set<Department> subDept = new HashSet<Department>();
