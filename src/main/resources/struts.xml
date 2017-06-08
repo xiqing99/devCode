@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+ 
+<struts>
+
+    <constant name="struts.custom.i18n.resources" value="messageResource"/>
+    <constant name="struts.i18n.encoding" value="GBK"/>
+ 	<constant name="struts.devMode" value="true" />
+ 
+	<package name="default" namespace="/" extends="struts-default">
+
+        <default-action-ref name="defaultAction"></default-action-ref>		
+        
+		<action name="Login" class="org.qixi.login.action.Login">
+		  <result name="Login_1" type="redirectAction">editEmployeeBasicInfo</result>
+		  <result name="Login_2"></result>
+		  <result name="failure">/pages/Login.jsp</result>
+		  <result name="input">/pages/Login.jsp</result>
+		</action>	
+		
+		<action name="viewEmployeeBasicInfo" class="org.qixi.employeeBasicInfo.action.ViewEmployeeBasicInfo">
+		  <result name="success">/pages/employee/ViewEmpBasicInfo.jsp</result>
+		</action>
+		
+		<action name="editEmployeeBasicInfo" class="org.qixi.employeeBasicInfo.action.EditEmployeeBasicInfo">
+		  <result name="success">/pages/employee/EditEmpBasicInfo.jsp</result>
+		</action>
+		
+		<action name="updateEmployeeBasicInfo" class="org.qixi.employeeBasicInfo.action.UpdateEmployeeBasicInfo">
+		  <result name="success" type="chain">viewEmployeeBasicInfo</result>
+		</action>
+		
+		<action name="defaultAction">
+		  <result>/pages/Login.jsp</result>
+		</action>	
+		
+	</package>
+	
+	
+</struts>
